@@ -1,0 +1,16 @@
+{
+  "name": "Claude Plugins Marketplace",
+  "version": "1.0.0",
+  "description": "A marketplace for Claude Code plugins",
+  "plugins": [],
+  "categories": [
+    "development",
+    "utilities",
+    "productivity",
+    "integration"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ascend-Digital/claude-plugins"
+  }
+}

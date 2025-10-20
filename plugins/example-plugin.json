@@ -1,0 +1,19 @@
+{
+  "id": "example-plugin",
+  "name": "Example Plugin",
+  "version": "1.0.0",
+  "description": "An example plugin demonstrating the plugin structure",
+  "author": "Ascend Digital",
+  "category": "utilities",
+  "tags": ["example", "template"],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/plugin-name"
+  },
+  "engines": {
+    "claude": ">=1.0.0"
+  },
+  "permissions": [],
+  "config": {}
+}
