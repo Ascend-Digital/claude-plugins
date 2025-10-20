@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Claude Plugin Definition",
+  "description": "Schema for Claude plugin definitions",
+  "type": "object",
+  "required": ["id", "name", "version", "description", "author", "category"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the plugin",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable plugin name"
+    },
+    "version": {
+      "type": "string",
+      "description": "Plugin version (semver format)",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the plugin"
+    },
+    "author": {
+      "type": "string",
+      "description": "Plugin author name or organization"
+    },
+    "category": {
+      "type": "string",
+      "description": "Plugin category",
+      "enum": ["development", "utilities", "productivity", "integration"]
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags for search and discovery",
+      "items": {
+        "type": "string"
+      }
+    },
+    "main": {
+      "type": "string",
+      "description": "Entry point file for the plugin"
+    },
+    "repository": {
+      "type": "object",
+      "description": "Source code repository information",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["git", "svn", "mercurial"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "engines": {
+      "type": "object",
+      "description": "Required engine versions",
+      "properties": {
+        "claude": {
+          "type": "string",
+          "description": "Required Claude version"
+        }
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "description": "Required permissions for the plugin",
+      "items": {
+        "type": "string"
+      }
+    },
+    "config": {
+      "type": "object",
+      "description": "Plugin configuration options"
+    }
+  }
+}
