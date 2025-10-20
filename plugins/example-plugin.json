@@ -9,7 +9,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ascend-Digital/claude-plugins"
+    "url": "https://github.com/username/plugin-name"
   },
   "engines": {
     "claude": ">=1.0.0"

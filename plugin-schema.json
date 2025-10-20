@@ -17,7 +17,7 @@
     "version": {
       "type": "string",
       "description": "Plugin version (semver format)",
-      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?(\\+[a-zA-Z0-9.-]+)?$"
     },
     "description": {
       "type": "string",
