@@ -1,16 +1,23 @@
 {
-  "extraKnownMarketplaces": {
-    "team-tools": {
-      "source": {
-        "source": "github",
-        "repo": "Ascend-Digital/claude-plugins"
-      }
-    },
-    "project-specific": {
-      "source": {
-        "source": "git",
-        "url": "https://github.com/Ascend-Digital/claude-plugins"
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ascend-marketplace",
+  "version": "1.0.0",
+  "description": "Ascend Agency internal Claude Code plugins",
+  "owner": {
+    "name": "Ascend Agency",
+    "email": "tallah.khan@ascend.agency"
+  },
+  "plugins": [
+    {
+      "name": "ascend",
+      "description": "Jira ticket triage, technical specs, ambiguity detection, and codebase analysis",
+      "source": "./plugins/ascend",
+      "category": "development",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ascend Agency",
+        "email": "tallah.khan@ascend.agency"
       }
     }
-  }
+  ]
 }

@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "github-readonly": {
+      "type": "sse",
+      "url": "<YOUR_GITHUB_MCP_SSE_ENDPOINT>",
+      "headers": {
+        "Authorization": "Bearer <YOUR_TOKEN_OR_REMOVE_IF_HANDLED_BY_SERVER>"
+      },
+      "allowedTools": [
+        "get_file_contents",
+        "search_repositories",
+        "search_code",
+        "list_branches",
+        "list_commits",
+        "get_commit",
+        "get_repository",
+        "list_repository_files",
+        "get_issue",
+        "list_issues",
+        "search_issues",
+        "get_issue_comments",
+        "get_pull_request",
+        "list_pull_requests",
+        "get_pull_request_files",
+        "get_pull_request_diff",
+        "get_pull_request_comments",
+        "get_pull_request_reviews",
+        "list_tags",
+        "list_releases",
+        "get_release"
+      ]
+    }
+  }
+}
