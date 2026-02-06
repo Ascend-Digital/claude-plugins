@@ -100,9 +100,10 @@ If triage encounters an entitlement not listed here, it will **ask the user** fo
 | `us.example-brand.com` | `us-example-brand` | `ascend-agency/us-example-brand` | US Example Brand storefront |
 -->
 
-| Entitlement (domain) | Repository | GitHub | Notes |
-|---|---|---|---|
-| | | | |
+| Entitlement (domain) | Repository                       | GitHub | Notes                                                                                                                                                            |
+|----------------------|----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| uk.tradeshutters.com | uk-trade-shutters | ascend-digital/uk-trade-shutters       | UK Trade Shutters portal                                                                                                                                         |
+| affiliates.shutterlyfabulous.com | tcmm-affiliate-booking | ascend-digital/tcmm-affiliate-booking | Shutterly Fabulous affiliates booking, can have wildcard e.g. johnlewis.shutterlyfabulous.com which is shows an appointment request page, is built with Laravel. |
 
 ---
 

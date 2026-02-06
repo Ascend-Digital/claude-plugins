@@ -14,14 +14,20 @@ The user provides a Jira ticket key (e.g., `PROJ-123`) via `$ARGUMENTS`. If no k
 
 ### Phase 1: Fetch Ticket & Resolve Entitlement
 
-1. Use the Atlassian MCP tools to fetch the full Jira issue for the provided key. Extract: summary, description, issue type, reporter, labels, components, linked issues, all comments, **and the "Entitlement" custom field**.
-2. If the ticket has parent/child relationships or linked issues, fetch those summaries too for context.
+**IMPORTANT — Jira API performance**: The Atlassian MCP `getJiraIssue` tool returns ALL fields by default, which can produce 100K+ character responses that exceed tool output limits. You MUST use the `fields` parameter to request only what you need.
+
+1. Fetch the ticket using `getJiraIssue` with the `fields` parameter set to: `["summary", "description", "issuetype", "status", "reporter", "priority", "labels", "components", "issuelinks", "parent", "comment", "customfield_*"]`
+   - Note: The Entitlement field is likely a custom field. If the field name is known (e.g., `customfield_10500`), request it explicitly. Otherwise, include custom fields on the first run, identify the Entitlement field's ID from the response, and record it in the memory file under Jira Project Context for future runs.
+   - If the response is still too large, make two smaller calls: one for core fields (`summary`, `description`, `issuetype`, `status`, `reporter`, `priority`, `labels`, `components`) and a second for `comment` and the entitlement custom field.
+2. If the ticket has parent/child relationships or linked issues, fetch those summaries using `getJiraIssue` with `fields: ["summary", "status", "issuetype", "priority"]` — do NOT fetch full details for linked tickets.
 3. **Resolve the Entitlement to a repository**:
-   a. Read the **Entitlement Map** from `references/memory.md` in the `skills/triage-analysis/` directory.
-   b. Look up the Entitlement field value (a product domain, e.g., `uk.tradeshutters.com`) in the map.
-   c. **If found**: Use the mapped repository name and GitHub identifier as the **primary repo** for this ticket. This repo should be investigated first and most thoroughly during codebase analysis.
-   d. **If NOT found**: Stop and ask the user: *"The entitlement `{domain}` isn't in my memory yet. Which repository does this belong to? Please provide the repo name and GitHub org/repo identifier (e.g., `uk-trade-shutters` / `ascend-agency/uk-trade-shutters`)."* Once the user responds, **immediately write the new mapping** to the Entitlement Map table in `references/memory.md` so it's remembered for all future triage runs. Then continue.
-   e. **If the Entitlement field is empty or missing**: Note this in the triage output and proceed using codebase analysis and ticket content to infer the relevant repos.
+
+**IMPORTANT — No bash/shell fallbacks for data parsing**: If a tool result is saved to a file due to size limits, use the `Read` tool to read it — NEVER use bash commands like `cat`, `python`, or `jq` to parse MCP tool outputs. This avoids permission prompts that block the workflow.
+a. Read the **Entitlement Map** from `references/memory.md` in the `skills/triage-analysis/` directory.
+b. Look up the Entitlement field value (a product domain, e.g., `uk.tradeshutters.com`) in the map.
+c. **If found**: Use the mapped repository name and GitHub identifier as the **primary repo** for this ticket. This repo should be investigated first and most thoroughly during codebase analysis.
+d. **If NOT found**: Stop and ask the user: *"The entitlement `{domain}` isn't in my memory yet. Which repository does this belong to? Please provide the repo name and GitHub org/repo identifier (e.g., `uk-trade-shutters` / `ascend-agency/uk-trade-shutters`)."* Once the user responds, **immediately write the new mapping** to the Entitlement Map table in `references/memory.md` so it's remembered for all future triage runs. Then continue.
+e. **If the Entitlement field is empty or missing**: Note this in the triage output and proceed using codebase analysis and ticket content to infer the relevant repos.
 
 ### Phase 2: Classify (Delegate to classifier agent)
 
