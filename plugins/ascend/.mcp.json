@@ -1,10 +1,11 @@
 {
   "mcpServers": {
     "github-readonly": {
-      "type": "sse",
-      "url": "<YOUR_GITHUB_MCP_SSE_ENDPOINT>",
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/readonly",
       "headers": {
-        "Authorization": "Bearer <YOUR_TOKEN_OR_REMOVE_IF_HANDLED_BY_SERVER>"
+        "X-MCP-Toolsets": "repos,issues,pull_requests",
+        "X-MCP-Readonly": "true"
       },
       "allowedTools": [
         "get_file_contents",

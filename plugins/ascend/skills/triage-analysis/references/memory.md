@@ -119,4 +119,5 @@ Document Jira-specific context that helps with classification and routing.
 - **Labels meaning**: `customer-facing` = affects end users. `internal` = tooling/infra.
 -->
 
-_No Jira context defined yet. Add your project context above._
+- customfield_10744 — The structured entitlement object containing entitlementId, product (with name affiliates.shutterlyfabulous.com), and entitledEntity (organization ID 2 / TCMM)
+- customfield_10932 — A simple string field containing "affiliates.shutterlyfabulous.com" (likely the "Domain Reporting" or display field)
