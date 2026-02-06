@@ -8,19 +8,6 @@ This repository serves as a plugin marketplace for Claude Code, allowing develop
 
 ## How to install
 
-Add the following to ~/.claude/settings.json 
-
-```
-  "extraKnownMarketplaces": {
-    "ascend-marketplace": {
-      "source": {
-        "source": "git",
-        "url": "git@github.com:ascend-agency/claude-plugins.git"
-      }
-    }
-  }
-```
-
 Start up Claude Code and then run the following commands:
 
 ```
