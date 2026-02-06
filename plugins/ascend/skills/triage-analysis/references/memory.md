@@ -119,5 +119,10 @@ Document Jira-specific context that helps with classification and routing.
 - **Labels meaning**: `customer-facing` = affects end users. `internal` = tooling/infra.
 -->
 
+## Atlassian Configuration
+- **Jira site**: `ascend-agency.atlassian.net` (NOT ascend-digital)
+- The Atlassian MCP server requires valid auth — if 401 errors occur, credentials need refreshing
+
+## Entitlement Custom Fields
 - customfield_10744 — The structured entitlement object containing entitlementId, product (with name affiliates.shutterlyfabulous.com), and entitledEntity (organization ID 2 / TCMM)
 - customfield_10932 — A simple string field containing "affiliates.shutterlyfabulous.com" (likely the "Domain Reporting" or display field)
