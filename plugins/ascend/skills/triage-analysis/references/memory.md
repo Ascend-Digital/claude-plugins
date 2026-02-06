@@ -29,7 +29,7 @@ Define how your repositories relate to each other. This helps agents understand 
 Example format:
 
 ### frontend-app
-- **GitHub**: `ascend-agency/frontend-app`
+- **GitHub**: `ascend-digital/frontend-app`
 - **Local path**: `~/projects/frontend-app`
 - **Purpose**: Customer-facing React SPA
 - **Depends on**: api-gateway, shared-types
@@ -37,7 +37,7 @@ Example format:
 - **Key paths**: `src/components/`, `src/api/`, `src/store/`
 
 ### api-gateway
-- **GitHub**: `ascend-agency/api-gateway`
+- **GitHub**: `ascend-digital/api-gateway`
 - **Local path**: `~/projects/api-gateway`
 - **Purpose**: Express.js API serving frontend and mobile
 - **Depends on**: user-service, billing-service, shared-types
@@ -45,7 +45,7 @@ Example format:
 - **Key paths**: `src/routes/`, `src/middleware/`, `src/models/`
 
 ### shared-types
-- **GitHub**: `ascend-agency/shared-types`
+- **GitHub**: `ascend-digital/shared-types`
 - **Local path**: `~/projects/shared-types`
 - **Purpose**: TypeScript type definitions shared across repos
 - **Consumed by**: frontend-app, api-gateway, mobile-app
@@ -96,8 +96,8 @@ If triage encounters an entitlement not listed here, it will **ask the user** fo
 <!-- Add your entitlement-to-repo mappings below. Example format:
 | Entitlement (domain) | Repository | GitHub | Notes |
 |---|---|---|---|
-| `uk.tradeshutters.com` | `uk-trade-shutters` | `ascend-agency/uk-trade-shutters` | UK Trade Shutters storefront |
-| `us.example-brand.com` | `us-example-brand` | `ascend-agency/us-example-brand` | US Example Brand storefront |
+| `uk.tradeshutters.com` | `uk-trade-shutters` | `ascend-digital/uk-trade-shutters` | UK Trade Shutters storefront |
+| `us.example-brand.com` | `us-example-brand` | `ascend-digital/us-example-brand` | US Example Brand storefront |
 -->
 
 | Entitlement (domain) | Repository                       | GitHub | Notes                                                                                                                                                            |

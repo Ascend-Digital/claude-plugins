@@ -25,7 +25,7 @@ View or update the ascend plugin's long-term memory, which stores domain definit
 /ascend:memory add glossary "Widget" "Customer-facing dashboard component in frontend-app/src/components/Widget/"
 /ascend:memory add convention "PRs require 2 approvals minimum"
 /ascend:memory add debt "auth module" "Legacy session-based auth, migration to JWT planned Q3"
-/ascend:memory add entitlement "uk.tradeshutters.com" "uk-trade-shutters" "ascend-agency/uk-trade-shutters" "UK Trade Shutters storefront"
+/ascend:memory add entitlement "uk.tradeshutters.com" "uk-trade-shutters" "ascend-digital/uk-trade-shutters" "UK Trade Shutters storefront"
 /ascend:memory add jira "Project key: PROJ, Sprint cadence: 2-week sprints"
 /ascend:memory edit
 ```

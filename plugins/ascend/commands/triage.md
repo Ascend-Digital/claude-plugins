@@ -26,7 +26,7 @@ The user provides a Jira ticket key (e.g., `PROJ-123`) via `$ARGUMENTS`. If no k
 a. Read the **Entitlement Map** from `references/memory.md` in the `skills/triage-analysis/` directory.
 b. Look up the Entitlement field value (a product domain, e.g., `uk.tradeshutters.com`) in the map.
 c. **If found**: Use the mapped repository name and GitHub identifier as the **primary repo** for this ticket. This repo should be investigated first and most thoroughly during codebase analysis.
-d. **If NOT found**: Stop and ask the user: *"The entitlement `{domain}` isn't in my memory yet. Which repository does this belong to? Please provide the repo name and GitHub org/repo identifier (e.g., `uk-trade-shutters` / `ascend-agency/uk-trade-shutters`)."* Once the user responds, **immediately write the new mapping** to the Entitlement Map table in `references/memory.md` so it's remembered for all future triage runs. Then continue.
+d. **If NOT found**: Stop and ask the user: *"The entitlement `{domain}` isn't in my memory yet. Which repository does this belong to? Please provide the repo name and GitHub org/repo identifier (e.g., `uk-trade-shutters` / `ascend-digital/uk-trade-shutters`)."* Once the user responds, **immediately write the new mapping** to the Entitlement Map table in `references/memory.md` so it's remembered for all future triage runs. Then continue.
 e. **If the Entitlement field is empty or missing**: Note this in the triage output and proceed using codebase analysis and ticket content to infer the relevant repos.
 
 ### Phase 2: Classify (Delegate to classifier agent)
