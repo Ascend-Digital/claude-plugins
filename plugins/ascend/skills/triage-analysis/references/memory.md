@@ -35,22 +35,6 @@ Example format:
 - **Depends on**: api-gateway, shared-types
 - **Owned by**: Frontend team
 - **Key paths**: `src/components/`, `src/api/`, `src/store/`
-
-### api-gateway
-- **GitHub**: `ascend-digital/api-gateway`
-- **Local path**: `~/projects/api-gateway`
-- **Purpose**: Express.js API serving frontend and mobile
-- **Depends on**: user-service, billing-service, shared-types
-- **Owned by**: Backend team
-- **Key paths**: `src/routes/`, `src/middleware/`, `src/models/`
-
-### shared-types
-- **GitHub**: `ascend-digital/shared-types`
-- **Local path**: `~/projects/shared-types`
-- **Purpose**: TypeScript type definitions shared across repos
-- **Consumed by**: frontend-app, api-gateway, mobile-app
-- **Owned by**: Platform team
-- **Deploy note**: Changes here require coordinated releases
 -->
 
 _No repositories defined yet. Add your repo map above._
@@ -93,17 +77,11 @@ Maps the Jira "Entitlement" field (a product domain) to the corresponding reposi
 
 If triage encounters an entitlement not listed here, it will **ask the user** for the correct repository and **add the mapping below** so it never has to ask again.
 
-<!-- Add your entitlement-to-repo mappings below. Example format:
-| Entitlement (domain) | Repository | GitHub | Notes |
-|---|---|---|---|
-| `uk.tradeshutters.com` | `uk-trade-shutters` | `ascend-digital/uk-trade-shutters` | UK Trade Shutters storefront |
-| `us.example-brand.com` | `us-example-brand` | `ascend-digital/us-example-brand` | US Example Brand storefront |
--->
-
-| Entitlement (domain) | Repository                       | GitHub | Notes                                                                                                                                                            |
-|----------------------|----------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| uk.tradeshutters.com | uk-trade-shutters | ascend-digital/uk-trade-shutters       | UK Trade Shutters portal                                                                                                                                         |
-| affiliates.shutterlyfabulous.com | tcmm-affiliate-booking | ascend-digital/tcmm-affiliate-booking | Shutterly Fabulous affiliates booking, can have wildcard e.g. johnlewis.shutterlyfabulous.com which is shows an appointment request page, is built with Laravel. |
+| Entitlement (domain) | GitHub Repositories | Notes |
+|----------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| uk.tradeshutters.com | ascend-digital/uk-trade-shutters | UK Trade Shutters portal |
+| affiliates.shutterlyfabulous.com | ascend-digital/tcmm-affiliate-booking | Shutterly Fabulous affiliates booking, can have wildcard e.g. johnlewis.shutterlyfabulous.com which is shows an appointment request page, is built with Laravel. |
+| mtm.mydecora.co.uk | ascend-digital/decora-m2m-portal | Decora MTM Portal for ordering blinds / made to measure products, deeply linked with Blindata. |
 
 ---
 
@@ -111,18 +89,48 @@ If triage encounters an entitlement not listed here, it will **ask the user** fo
 
 Document Jira-specific context that helps with classification and routing.
 
-<!-- Add your Jira context below. Example format:
-- **Project key**: PROJ
-- **Board**: Kanban board "Engineering"
-- **Sprint cadence**: 2-week sprints, starting Mondays
-- **SLA targets**: P1 = 4hr response, P2 = 1 business day, P3 = 1 sprint, P4 = backlog
-- **Labels meaning**: `customer-facing` = affects end users. `internal` = tooling/infra.
--->
-
 ## Atlassian Configuration
 - **Jira site**: `ascend-agency.atlassian.net` (NOT ascend-digital)
 - The Atlassian MCP server requires valid auth — if 401 errors occur, credentials need refreshing
 
 ## Entitlement Custom Fields
-- customfield_10744 — The structured entitlement object containing entitlementId, product (with name affiliates.shutterlyfabulous.com), and entitledEntity (organization ID 2 / TCMM)
-- customfield_10932 — A simple string field containing "affiliates.shutterlyfabulous.com" (likely the "Domain Reporting" or display field)
+- `customfield_10744` — The structured entitlement object containing entitlementId, product (with name e.g. mtm.mydecora.co.uk), and entitledEntity (organization ID and type)
+- `customfield_10932` — A simple string field containing the entitlement domain (e.g., "affiliates.shutterlyfabulous.com"). May be null — always check `customfield_10744` as fallback.
+
+---
+
+## Service Desk Custom Fields
+
+Maps Jira custom field IDs to their purpose. These are the structured form fields that
+Service Desk tickets use to capture reporter responses. The triage system reads this section
+to know which fields to fetch — avoiding the need for a full-field discovery call on every run.
+
+When triage discovers new fields, it adds them here automatically.
+
+### Project: CS (Ascend Customer Service Desk)
+
+**Bug report form fields:**
+
+| Field ID | Purpose | Notes |
+|---|---|---|
+| `customfield_10777` | Reporter's description of the problem | Main content field — contains the user's explanation of what went wrong. May include inline images. |
+| `customfield_10778` | What happened instead / actual behaviour | The user's description of unexpected behaviour |
+| `customfield_10780` | Scope of impact | Select field. Values: "Most or all users", "Some users", etc. |
+| `customfield_10781` | Severity self-assessment | Select field. Values: "It's inconvenient but important user journeys are still working", etc. |
+| `customfield_10782` | Workaround availability | Select field. Values: "No, there is no workaround", "Yes, there is a workaround", etc. |
+| `customfield_10130` | Priority classification | Auto-assigned priority (e.g., "P3 - Medium") |
+
+**Template/boilerplate fields (skip these — they contain only unfilled templates):**
+
+| Field ID | Purpose | Notes |
+|---|---|---|
+| `customfield_10100` | Feature request template | Contains "Please give a brief description of the feature" prompts — skip if only `-` answers |
+| `customfield_10101` | Change request template | Contains "What feature would you like to change?" prompts — skip if only `-` answers |
+| `customfield_10102` | Bug report template (alternative) | Contains "Please give a brief description of the problem" prompts — skip if only `-` answers |
+| `customfield_10446` | Project overview template | Epic-level fields: Stakeholders, Goal, Target Users — usually empty on bugs |
+| `customfield_10447` | Discovery template | Discovery inputs/outputs checklist — usually empty on bugs |
+| `customfield_10448` | Development template | Development objectives template — usually empty on bugs |
+| `customfield_10449` | User story template | AS A / I WANT / SO THAT template — usually empty on bugs |
+| `customfield_10479` | Internal bug description template | Bug Description, Repro Steps, Expected/Actual result — skip if only `-` answers |
+| `customfield_10314` | Additional notes | Often contains just "N/A" |
+| `customfield_10316` | User story (alternative) | AS A / I WANT / SO THAT — usually unfilled |
