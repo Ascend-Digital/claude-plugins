@@ -15,6 +15,17 @@ Start up Claude Code and then run the following commands:
 /plugin install ascend@ascend-marketplace
 ```
 
+### Wiki MCP Server
+
+The plugin includes an integration with the Ascend Wiki MCP server. To enable it, set your auth token:
+
+```bash
+# Add to ~/.zshrc
+export ASCEND_WIKI_MCP_TOKEN="your-token"
+```
+
+Restart your shell and Claude Code. The wiki tools (`search_wiki`, `read_page`, etc.) will then be available automatically.
+
 You can now start using commands such as:
 
 ```
