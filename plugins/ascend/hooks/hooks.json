@@ -1,5 +1,15 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -z \"$ASCEND_WIKI_MCP_TOKEN\" ]; then echo '⚠️ ASCEND_WIKI_MCP_TOKEN is not set. The Ascend Wiki MCP server will not be available. Set it in ~/.zshrc: export ASCEND_WIKI_MCP_TOKEN=\"your-token\"'; fi"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",

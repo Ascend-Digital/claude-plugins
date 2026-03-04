@@ -33,6 +33,22 @@
         "list_releases",
         "get_release"
       ]
+    },
+    "ascend-wiki": {
+      "type": "http",
+      "url": "https://wiki.seeiton.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${ASCEND_WIKI_MCP_TOKEN}"
+      },
+      "allowedTools": [
+        "search_wiki",
+        "get_wiki_structure",
+        "read_page",
+        "get_page_summary",
+        "find_related_pages",
+        "list_projects",
+        "read_section"
+      ]
     }
   }
 }
