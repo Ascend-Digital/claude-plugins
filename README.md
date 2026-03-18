@@ -15,6 +15,30 @@ Start up Claude Code and then run the following commands:
 /plugin install ascend@ascend-marketplace
 ```
 
+### GitHub MCP Server
+
+The plugin includes a read-only GitHub MCP server for codebase analysis. To set it up:
+
+1. Install the GitHub MCP server:
+   ```bash
+   brew install github-mcp-server
+   ```
+
+2. Create a GitHub Personal Access Token at https://github.com/settings/tokens with `repo` read access.
+
+3. Set it in your shell profile (`~/.zshrc`):
+   ```bash
+   echo 'export GITHUB_TOKEN="ghp_xxxxxxxxxxxxx"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+   Or in your Claude Code settings (`~/.claude/.env`):
+   ```
+   GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
+   ```
+
+Restart Claude Code. The GitHub tools will then be available automatically.
+
 ### Wiki MCP Server
 
 The plugin includes an integration with the Ascend Wiki MCP server. To enable it, set your auth token:

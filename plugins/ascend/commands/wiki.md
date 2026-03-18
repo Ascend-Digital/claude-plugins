@@ -21,14 +21,7 @@ If no arguments are provided, ask the user what they'd like to document.
 
 ### Step 1: Check Existing Wiki Content
 
-Use the Ascend Wiki MCP to understand what's already documented for this project:
-
-1. `list_projects` — confirm if this project has existing docs
-2. `get_wiki_structure` — understand the structural layout and where articles sit
-3. If the project has docs, use `read_section` with the project path to load all existing
-   articles
-4. `search_wiki` or `find_related_pages` with keywords from `$ARGUMENTS` to find related
-   articles across all projects
+Review /docs/wiki folder to see what is already documented for this project.
 
 Note which articles exist, what they cover, and what cross-links they have.
 
