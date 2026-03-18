@@ -85,7 +85,7 @@ architectural decisions, non-obvious choices.
 - Known trade-offs or temporary solutions
 If nothing applies, leave the section empty (keep the heading and HTML comment).
 
-**Testing**: Leave as the placeholder `- ` for the user to fill manually.
+**Testing**: What steps are needed in order to demonstrate this change works as intended
 
 **Reminders (Author)**: Always include the full checklist exactly as it appears in the
 template, with all checkboxes unchecked.
